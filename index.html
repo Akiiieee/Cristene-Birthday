@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Cristene ✈️ 🌇</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#181733;
+    --navy-mid:#332a5c;
+    --dusk-purple:#5b3f7a;
+    --sunset-orange:#ff8c5a;
+    --sunset-coral:#ff6f91;
+    --lantern-gold:#ffcf7a;
+    --cream:#fff6ea;
+    --card-dark:#241f3d;
+    --card-dark-2:#2c2450;
+    --paw-brown:#a9805f;
+    --font-display:'Fraunces', serif;
+    --font-body:'Outfit', sans-serif;
+    --font-hand:'Caveat', cursive;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--cream);
+    background:var(--navy-deep);
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  /* ---------- SKY BACKGROUND ---------- */
+  .sky{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:linear-gradient(180deg,
+      #14122c 0%,
+      #241d4a 22%,
+      #4a3468 45%,
+      #8a4f6b 65%,
+      #ff8c5a 90%,
+      #ffb46a 100%);
+  }
+  .stars{
+    position:fixed; inset:0; z-index:-2; pointer-events:none;
+  }
+  .star{
+    position:absolute; width:2px; height:2px; background:#fff; border-radius:50%;
+    opacity:.7; animation:twinkle 3.5s ease-in-out infinite;
+  }
+  @keyframes twinkle{ 0%,100%{opacity:.15;} 50%{opacity:.9;} }
+
+  .hill{
+    position:fixed; left:0; right:0; bottom:0; z-index:-1; pointer-events:none;
+    height:26vh;
+    background:#120f28;
+    clip-path:polygon(0% 60%, 8% 45%, 18% 55%, 30% 35%, 42% 50%, 55% 30%, 68% 48%, 80% 38%, 92% 52%, 100% 40%, 100% 100%, 0% 100%);
+  }
+
+  .lantern-string{
+    position:fixed; top:0; left:0; right:0; z-index:0; pointer-events:none;
+    display:flex; justify-content:space-around; padding-top:2vh;
+  }
+  .lantern{
+    width:34px; height:34px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff2c9, var(--lantern-gold) 55%, #e08a3d 100%);
+    box-shadow:0 0 22px 8px rgba(255,207,122,.55);
+    animation:sway 4.5s ease-in-out infinite;
+    transform-origin:top center;
+    margin-top: 6vh;
+  }
+  .lantern:nth-child(2n){ animation-delay:.6s; margin-top:2vh; }
+  .lantern:nth-child(3n){ animation-delay:1.2s; margin-top:9vh; }
+  .lantern:nth-child(4n){ animation-delay:1.8s; margin-top:4vh; }
+  @keyframes sway{ 0%,100%{ transform:rotate(-4deg);} 50%{ transform:rotate(4deg);} }
+
+  .cat-silhouette{
+    position:fixed; bottom:6vh; right:6%; z-index:0; pointer-events:none;
+    width:110px; opacity:.9; filter:drop-shadow(0 0 10px rgba(0,0,0,.4));
+    animation:tailflick 5s ease-in-out infinite;
+  }
+  @keyframes tailflick{ 0%,100%{ transform:rotate(0deg);} 50%{ transform:rotate(1.5deg);} }
+
+  .paw-trail{
+    position:fixed; z-index:0; pointer-events:none; opacity:.18; width:18px;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .page{
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:8vh 6vw 6vh;
+    position:relative;
+    z-index:1;
+  }
+  #page-open{ display:none; }
+  #page-inside{ display:none; }
+
+  .eyebrow{
+    font-family:var(--font-body); letter-spacing:.35em; text-transform:uppercase;
+    font-size:.7rem; color:var(--lantern-gold); margin-bottom:14px; text-align:center;
+  }
+
+  h1.hero{
+    font-family:var(--font-display); font-weight:600; font-style:italic;
+    font-size:clamp(2.1rem, 7vw, 3.6rem);
+    text-align:center; line-height:1.05;
+    color:var(--cream);
+    text-shadow:0 2px 24px rgba(255,140,90,.35);
+    margin-bottom:6px;
+  }
+  .hero-sub{
+    font-family:var(--font-hand); font-size:clamp(1.3rem,3.5vw,1.7rem);
+    color:var(--lantern-gold); text-align:center; margin-bottom:3.5rem;
+  }
+
+  /* ---------- BOARDING PASS ---------- */
+  .boarding-pass{
+    width:min(560px, 92vw);
+    background:linear-gradient(135deg, var(--card-dark), var(--card-dark-2));
+    border-radius:18px;
+    box-shadow:0 25px 60px -20px rgba(0,0,0,.6), 0 0 0 1px rgba(255,207,122,.12);
+    padding:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .bp-top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 26px 14px;
+    border-bottom:1px dashed rgba(255,246,234,.25);
+  }
+  .bp-brand{
+    font-family:var(--font-display); font-style:italic; font-weight:600;
+    font-size:1.05rem; color:var(--lantern-gold); letter-spacing:.02em;
+  }
+  .bp-brand span{ color:var(--sunset-coral); }
+  .bp-tag{
+    font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
+    color:rgba(255,246,234,.55);
+  }
+  .bp-body{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px 24px;
+    padding:22px 26px 10px;
+  }
+  .bp-field{ }
+  .bp-label{
+    font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+    color:rgba(255,246,234,.5); margin-bottom:4px;
+  }
+  .bp-value{
+    font-family:var(--font-body); font-weight:600; font-size:1rem; color:var(--cream);
+  }
+  .bp-value.big{ font-family:var(--font-display); font-style:italic; font-size:1.3rem; color:var(--lantern-gold); }
+
+  .bp-perf{
+    position:relative;
+    height:0;
+    margin:18px 0 0;
+  }
+  .bp-perf::before, .bp-perf::after{
+    content:""; position:absolute; top:-12px; width:24px; height:24px; border-radius:50%;
+    background:var(--navy-deep);
+  }
+  .bp-perf::before{ left:-12px; }
+  .bp-perf::after{ right:-12px; }
+
+  .bp-stub{
+    padding:22px 26px 26px;
+    text-align:center;
+  }
+  .countdown-label{
+    font-size:.68rem; letter-spacing:.25em; text-transform:uppercase;
+    color:rgba(255,246,234,.6); margin-bottom:14px;
+  }
+  .countdown{
+    display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+  }
+  .cd-unit{
+    background:rgba(255,246,234,.06);
+    border:1px solid rgba(255,207,122,.25);
+    border-radius:10px;
+    min-width:64px;
+    padding:10px 6px 8px;
+  }
+  .cd-num{
+    font-family:var(--font-display); font-weight:600; font-size:1.7rem; color:var(--cream);
+    line-height:1;
+  }
+  .cd-unit-label{
+    font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--lantern-gold);
+    margin-top:4px; display:block;
+  }
+  .countdown-done{
+    display:none;
+    font-family:var(--font-display); font-style:italic; font-size:1.4rem;
+    color:var(--lantern-gold);
+  }
+
+  /* ---------- CAKE ---------- */
+  .cake-wrap{
+    margin-top:3.2rem; display:flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  .cake-btn{
+    background:none; border:none; cursor:not-allowed; padding:8px;
+    transition:transform .25s ease, filter .25s ease;
+    opacity:.55;
+  }
+  .cake-btn.ready{ cursor:pointer; opacity:1; }
+  .cake-btn.ready:hover{ transform:translateY(-4px) scale(1.03); }
+  .cake-btn:focus-visible{ outline:3px solid var(--lantern-gold); outline-offset:6px; border-radius:12px; }
+
+  .cake-svg{ width:120px; height:auto; display:block; }
+  .flame{ animation:flicker 1.4s ease-in-out infinite; transform-origin:center bottom; }
+  @keyframes flicker{ 0%,100%{ transform:scaleY(1) rotate(-1deg);} 50%{ transform:scaleY(1.12) rotate(2deg);} }
+  .cake-btn:not(.ready) .flame{ animation:none; opacity:.35; }
+
+  .cake-caption{
+    font-family:var(--font-hand); font-size:1.15rem; color:rgba(255,246,234,.75);
+    text-align:center;
+  }
+  .cake-caption.locked::before{ content:"🔒  "; }
+
+  /* ---------- BALLOON / CONFETTI OVERLAY ---------- */
+  .celebrate-layer{
+    position:fixed; inset:0; z-index:40; pointer-events:none; overflow:hidden;
+  }
+  .balloon{
+    position:absolute; bottom:-140px; width:46px; height:58px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation:rise linear forwards;
+    opacity:.95;
+  }
+  .balloon::after{
+    content:""; position:absolute; left:50%; top:100%; width:1px; height:40px;
+    background:rgba(255,246,234,.4); transform:translateX(-50%);
+  }
+  @keyframes rise{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); }
+    50%{ transform:translateY(-60vh) translateX(20px) rotate(6deg); }
+    100%{ transform:translateY(-125vh) translateX(-10px) rotate(-4deg); opacity:0; }
+  }
+  .confetti{
+    position:absolute; top:-20px; width:9px; height:14px; opacity:.9;
+    animation:fall linear forwards;
+  }
+  @keyframes fall{
+    0%{ transform:translateY(0) rotate(0deg); }
+    100%{ transform:translateY(110vh) rotate(540deg); opacity:.2; }
+  }
+
+  .reveal-msg{
+    position:fixed; inset:0; z-index:41; display:none;
+    flex-direction:column; align-items:center; justify-content:center; gap:22px;
+    text-align:center; padding:6vh 6vw;
+  }
+  .reveal-msg h2{
+    font-family:var(--font-display); font-style:italic; font-weight:600;
+    font-size:clamp(2.2rem, 9vw, 4rem); color:var(--cream);
+    text-shadow:0 4px 30px rgba(255,140,90,.5);
+  }
+  .reveal-msg p{
+    font-family:var(--font-hand); font-size:clamp(1.3rem,4vw,1.7rem); color:var(--lantern-gold);
+  }
+  .continue-btn{
+    font-family:var(--font-body); font-weight:600; font-size:.85rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--navy-deep); background:var(--lantern-gold);
+    border:none; padding:14px 30px; border-radius:999px; cursor:pointer;
+    box-shadow:0 12px 30px -10px rgba(255,207,122,.6);
+    transition:transform .2s ease;
+  }
+  .continue-btn:hover{ transform:translateY(-2px); }
+  .continue-btn:focus-visible{ outline:3px solid var(--cream); outline-offset:3px; }
+
+  /* ---------- PAGE 2 : INSIDE ---------- */
+  .paw-divider{
+    display:flex; gap:14px; justify-content:center; margin:8px 0 2.5rem; opacity:.65;
+  }
+  .paw-divider svg{ width:20px; height:20px; }
+
+  .postcard{
+    width:min(680px, 92vw);
+    background:linear-gradient(135deg, var(--card-dark), var(--card-dark-2));
+    border-radius:16px;
+    box-shadow:0 25px 60px -20px rgba(0,0,0,.6), 0 0 0 1px rgba(255,207,122,.12);
+    padding:clamp(24px, 5vw, 44px);
+    margin-bottom:3.5rem;
+    position:relative;
+  }
+  .stamp{
+    position:absolute; top:18px; right:18px;
+    width:64px; height:64px; border:2px dashed rgba(255,207,122,.5); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-hand); font-size:.85rem; color:var(--lantern-gold);
+    transform:rotate(8deg);
+  }
+  .message-text{
+    font-family:var(--font-hand); font-size:clamp(1.25rem, 2.6vw, 1.55rem);
+    line-height:1.6; color:var(--cream); white-space:pre-line;
+  }
+  .signoff{
+    margin-top:1.4rem; font-family:var(--font-hand); font-size:1.4rem; color:var(--lantern-gold); text-align:right;
+  }
+
+  .section-title{
+    font-family:var(--font-display); font-style:italic; font-weight:600;
+    font-size:clamp(1.5rem, 4vw, 2.1rem); text-align:center; margin-bottom:2rem; color:var(--cream);
+  }
+
+  .gallery{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:26px 22px;
+    width:min(920px, 94vw); margin-bottom:4rem;
+  }
+  .polaroid{
+    background:var(--cream); padding:12px 12px 40px; border-radius:4px;
+    width:200px;
+    box-shadow:0 18px 34px -12px rgba(0,0,0,.55);
+    transform:rotate(var(--r,-3deg));
+    transition:transform .3s ease;
+    position:relative;
+  }
+  .polaroid:hover{ transform:rotate(0deg) scale(1.04); z-index:2; }
+  .polaroid img{
+    width:100%; aspect-ratio:1/1; object-fit:cover; display:block; border-radius:2px;
+  }
+  .polaroid figcaption{
+    font-family:var(--font-hand); color:#3a3050; font-size:1.05rem;
+    text-align:center; margin-top:10px;
+  }
+  .polaroid .pin{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    width:20px; height:20px; opacity:.9;
+  }
+
+  .wishes{
+    width:min(760px, 94vw); display:flex; flex-wrap:wrap; gap:18px; justify-content:center;
+    margin-bottom:5rem;
+  }
+  .tag{
+    background:linear-gradient(135deg, var(--card-dark), var(--card-dark-2));
+    border:1px solid rgba(255,207,122,.25);
+    border-radius:12px 4px 4px 12px;
+    padding:16px 20px 16px 34px;
+    width:min(320px, 90vw);
+    position:relative;
+    box-shadow:0 14px 30px -14px rgba(0,0,0,.5);
+  }
+  .tag::before{
+    content:""; position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    width:8px; height:8px; border-radius:50%; background:var(--navy-deep);
+    box-shadow:0 0 0 2px rgba(255,207,122,.5);
+  }
+  .tag h3{
+    font-family:var(--font-body); font-weight:600; font-size:.78rem; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--lantern-gold); margin-bottom:6px;
+  }
+  .tag p{ font-family:var(--font-hand); font-size:1.15rem; color:var(--cream); line-height:1.4; }
+
+  footer{
+    text-align:center; padding-bottom:6vh; font-family:var(--font-hand);
+    font-size:1.2rem; color:rgba(255,246,234,.55);
+  }
+
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+</style>
+</head>
+<body>
+
+<div class="sky"></div>
+<div class="stars" id="stars"></div>
+<div class="hill"></div>
+<div class="lantern-string" aria-hidden="true">
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+</div>
+<svg class="cat-silhouette" viewBox="0 0 200 140" aria-hidden="true">
+  <path fill="#120f28" d="M10,140 L10,90 Q5,70 20,55 Q15,40 30,35 Q28,20 45,25 Q50,10 65,25 Q80,15 85,30 Q100,25 100,45 Q115,50 110,70 Q125,75 120,95 L120,140 Z"/>
+  <path fill="#120f28" d="M150,140 Q145,60 175,50 Q195,45 185,70 Q205,75 195,95 Q210,110 195,125 Q190,140 175,140 Z"/>
+</svg>
+
+<!-- ============ PAGE 1: COUNTDOWN ============ -->
+<section class="page" id="page-countdown">
+  <p class="eyebrow">A little journey, just for you</p>
+  <h1 class="hero">Happy Birthday,<br>Cristene</h1>
+  <p class="hero-sub">boarding begins August 18 ✈️ 🌇</p>
+
+  <div class="boarding-pass">
+    <div class="bp-top">
+      <div class="bp-brand">Golden&nbsp;Hour<span>Air</span></div>
+      <div class="bp-tag">Boarding Pass</div>
+    </div>
+    <div class="bp-body">
+      <div class="bp-field">
+        <div class="bp-label">Passenger</div>
+        <div class="bp-value big">Cristene</div>
+      </div>
+      <div class="bp-field">
+        <div class="bp-label">Seat</div>
+        <div class="bp-value">01A — window, sunset side</div>
+      </div>
+      <div class="bp-field">
+        <div class="bp-label">From</div>
+        <div class="bp-value">Another Year Older</div>
+      </div>
+      <div class="bp-field">
+        <div class="bp-label">To</div>
+        <div class="bp-value">20 & Wonderful ✨</div>
+      </div>
+    </div>
+    <div class="bp-perf"></div>
+    <div class="bp-stub">
+      <p class="countdown-label">Departing in</p>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-unit-label">Days</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-unit-label">Hrs</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-unit-label">Min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-unit-label">Sec</span></div>
+      </div>
+      <p class="countdown-done" id="countdown-done">Now boarding — welcome aboard! 🎉</p>
+    </div>
+  </div>
+
+  <div class="cake-wrap">
+    <button class="cake-btn" id="cakeBtn" disabled aria-disabled="true" aria-label="Open your birthday surprise, unlocks when the countdown reaches zero">
+      <svg class="cake-svg" viewBox="0 0 140 130" xmlns="http://www.w3.org/2000/svg">
+        <g class="flame"><ellipse cx="70" cy="14" rx="6" ry="10" fill="#ffd27a"/><ellipse cx="70" cy="16" rx="3" ry="6" fill="#ff8c5a"/></g>
+        <rect x="67" y="24" width="6" height="14" rx="2" fill="#fff6ea"/>
+        <rect x="30" y="70" width="80" height="34" rx="6" fill="#ff6f91"/>
+        <rect x="30" y="70" width="80" height="10" rx="4" fill="#fff6ea" opacity=".5"/>
+        <rect x="20" y="98" width="100" height="26" rx="8" fill="#5b3f7a"/>
+        <rect x="20" y="98" width="100" height="8" rx="4" fill="#fff6ea" opacity=".35"/>
+        <circle cx="45" cy="70" r="4" fill="#ffd27a"/>
+        <circle cx="70" cy="66" r="4" fill="#ffd27a"/>
+        <circle cx="95" cy="70" r="4" fill="#ffd27a"/>
+      </svg>
+    </button>
+    <p class="cake-caption locked" id="cakeCaption">Locked until August 18 — hang tight</p>
+  </div>
+</section>
+
+<!-- Celebration overlay -->
+<div class="celebrate-layer" id="celebrateLayer"></div>
+<div class="reveal-msg" id="revealMsg">
+  <h2>Happy Birthday, Cristene! 🎂</h2>
+  <p>you made it &mdash; now come see what's inside</p>
+  <button class="continue-btn" id="continueBtn">Continue the trip →</button>
+</div>
+
+<!-- ============ PAGE 2: INSIDE ============ -->
+<section class="page" id="page-inside">
+  <p class="eyebrow">Arrivals</p>
+  <h1 class="hero" style="font-size:clamp(1.8rem,6vw,2.8rem)">For Cristene, <br>with love</h1>
+  <div class="paw-divider" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="var(--lantern-gold)"><circle cx="6" cy="7" r="2.2"/><circle cx="12" cy="4.5" r="2.2"/><circle cx="18" cy="7" r="2.2"/><ellipse cx="12" cy="14" rx="6" ry="5"/></svg>
+    <svg viewBox="0 0 24 24" fill="var(--lantern-gold)"><circle cx="6" cy="7" r="2.2"/><circle cx="12" cy="4.5" r="2.2"/><circle cx="18" cy="7" r="2.2"/><ellipse cx="12" cy="14" rx="6" ry="5"/></svg>
+    <svg viewBox="0 0 24 24" fill="var(--lantern-gold)"><circle cx="6" cy="7" r="2.2"/><circle cx="12" cy="4.5" r="2.2"/><circle cx="18" cy="7" r="2.2"/><ellipse cx="12" cy="14" rx="6" ry="5"/></svg>
+  </div>
+
+  <div class="postcard">
+    <div class="stamp">Est.<br>Today</div>
+    <p class="message-text">Cristene,
+
+Happy birthday! I hope today feels like one of those pink-and-gold sunsets you love so much — the kind you'd stop everything just to watch a little longer.
+
+You're always chasing the next view, the next place, the next horizon, and honestly, that's one of my favorite things about you. This year I hope you get to see more sunsets, pet more cats along the way, and stamp your passport a few more times.
+
+I put this little page together because I wanted you to have something made just for you, the way you make ordinary places feel a little more special just by being there.
+
+Wishing you a year as warm as golden hour and as soft as a cat curled up in the sun.</p>
+    <p class="signoff">— with love, always</p>
+  </div>
+
+  <h2 class="section-title">Snapshots of you</h2>
+  <div class="gallery">
+    <figure class="polaroid" style="--r:-4deg">
+      <img src="images/photo5.png" alt="Cristene watching the sunset by the lantern tree" loading="lazy">
+      <svg class="pin" viewBox="0 0 24 24" fill="#ff6f91"><circle cx="12" cy="12" r="8"/></svg>
+      <figcaption>golden hour girl</figcaption>
+    </figure>
+    <figure class="polaroid" style="--r:3deg">
+      <img src="images/photo4.png" alt="Cristene posing under the string lights" loading="lazy">
+      <svg class="pin" viewBox="0 0 24 24" fill="#ffd27a"><circle cx="12" cy="12" r="8"/></svg>
+      <figcaption>lantern light</figcaption>
+    </figure>
+    <figure class="polaroid" style="--r:-2deg">
+      <img src="images/photo1.jpg" alt="Cristene smiling with her Hello Kitty pillow" loading="lazy">
+      <svg class="pin" viewBox="0 0 24 24" fill="#ff8c5a"><circle cx="12" cy="12" r="8"/></svg>
+      <figcaption>that smile</figcaption>
+    </figure>
+    <figure class="polaroid" style="--r:5deg">
+      <img src="images/photo2.jpg" alt="Cristene on a night out" loading="lazy">
+      <svg class="pin" viewBox="0 0 24 24" fill="#5b3f7a"><circle cx="12" cy="12" r="8"/></svg>
+      <figcaption>out and about</figcaption>
+    </figure>
+    <figure class="polaroid" style="--r:-3deg">
+      <img src="images/photo3.jpg" alt="Cristene up close" loading="lazy">
+      <svg class="pin" viewBox="0 0 24 24" fill="#ff6f91"><circle cx="12" cy="12" r="8"/></svg>
+      <figcaption>just you</figcaption>
+    </figure>
+  </div>
+
+  <h2 class="section-title">Birthday wishes for you</h2>
+  <div class="wishes">
+    <div class="tag"><h3>Wish 01</h3><p>May every sunset this year stop you in your tracks, just like your favorites always do.</p></div>
+    <div class="tag"><h3>Wish 02</h3><p>May you find a cat to befriend in every new place you visit.</p></div>
+    <div class="tag"><h3>Wish 03</h3><p>May your passport (and your heart) fill up with places that feel like home.</p></div>
+    <div class="tag"><h3>Wish 04</h3><p>May this year of tourism school lead you exactly where you're meant to go.</p></div>
+    <div class="tag"><h3>Wish 05</h3><p>May you always be as loved as you deserve to be. Happy birthday, Cristene.</p></div>
+  </div>
+
+  <footer>made with love, just for you 🐾</footer>
+</section>
+
+<script>
+(function(){
+  // stars
+  const starsEl = document.getElementById('stars');
+  const starCount = window.innerWidth < 600 ? 40 : 80;
+  for(let i=0;i<starCount;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100+'vw';
+    s.style.top = Math.random()*55+'vh';
+    s.style.animationDelay = (Math.random()*3.5)+'s';
+    starsEl.appendChild(s);
+  }
+
+  // countdown target: Aug 18, next occurrence (local time)
+  function getTarget(){
+    const now = new Date();
+    let target = new Date(now.getFullYear(), 7, 18, 0, 0, 0); // month 7 = August
+    if(target <= now){
+      target = new Date(now.getFullYear()+1, 7, 18, 0, 0, 0);
+    }
+    return target;
+  }
+  const target = getTarget();
+  const daysEl = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl = document.getElementById('cd-mins');
+  const secsEl = document.getElementById('cd-secs');
+  const countdownWrap = document.getElementById('countdown');
+  const countdownDone = document.getElementById('countdown-done');
+  const cakeBtn = document.getElementById('cakeBtn');
+  const cakeCaption = document.getElementById('cakeCaption');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function tick(){
+    const now = new Date();
+    const diff = target - now;
+    if(diff <= 0){
+      countdownWrap.style.display='none';
+      countdownDone.style.display='block';
+      unlockCake();
+      clearInterval(timer);
+      return;
+    }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    daysEl.textContent = pad(d);
+    hoursEl.textContent = pad(h);
+    minsEl.textContent = pad(m);
+    secsEl.textContent = pad(s);
+  }
+  const timer = setInterval(tick, 1000);
+  tick();
+
+  function unlockCake(){
+    cakeBtn.disabled = false;
+    cakeBtn.setAttribute('aria-disabled','false');
+    cakeBtn.classList.add('ready');
+    cakeCaption.classList.remove('locked');
+    cakeCaption.textContent = 'Tap the cake to blow out the candle 🕯️';
+  }
+
+  // celebration
+  const celebrateLayer = document.getElementById('celebrateLayer');
+  const revealMsg = document.getElementById('revealMsg');
+  const balloonColors = ['#ff8c5a','#ff6f91','#ffcf7a','#5b3f7a','#fff6ea'];
+
+  function launchCelebration(){
+    for(let i=0;i<18;i++){
+      const b = document.createElement('div');
+      b.className='balloon';
+      b.style.left = (Math.random()*90)+'vw';
+      b.style.background = balloonColors[i % balloonColors.length];
+      b.style.animationDuration = (5+Math.random()*3)+'s';
+      b.style.animationDelay = (Math.random()*1.2)+'s';
+      celebrateLayer.appendChild(b);
+    }
+    for(let i=0;i<60;i++){
+      const c = document.createElement('div');
+      c.className='confetti';
+      c.style.left = (Math.random()*100)+'vw';
+      c.style.background = balloonColors[i % balloonColors.length];
+      c.style.animationDuration = (3+Math.random()*2.5)+'s';
+      c.style.animationDelay = (Math.random()*1.5)+'s';
+      celebrateLayer.appendChild(c);
+    }
+    setTimeout(()=>{
+      revealMsg.style.display='flex';
+    }, 700);
+  }
+
+  cakeBtn.addEventListener('click', function(){
+    if(cakeBtn.disabled) return;
+    launchCelebration();
+  });
+
+  document.getElementById('continueBtn').addEventListener('click', function(){
+    document.getElementById('page-countdown').style.display='none';
+    revealMsg.style.display='none';
+    celebrateLayer.innerHTML='';
+    document.getElementById('page-inside').style.display='flex';
+    window.scrollTo({top:0, behavior:'instant'});
+  });
+})();
+</script>
+
+</body>
+</html>
